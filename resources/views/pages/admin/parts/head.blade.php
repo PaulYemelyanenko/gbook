@@ -13,5 +13,5 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    <title>{{ isset($title) ? $title : 'Gbook' }}</title>
+    <title>Admin panel</title>
 </head>

@@ -11,9 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'MessageController@index')->name('index');
+Route::get('/message/{id}/delete', 'Admin\IndexController@deleteMessage')->where(['id' => '[0-9]+'])->name('delete');
+Route::post('/message/store', 'MessageController@store')->name('store');
+Route::get('/profile', 'ProfileController@index')->name('profile.index');
+
+
+Route::prefix('admin')->middleware('auth')->group(function(){
+   Route::get('/', 'Admin\IndexController@index')->name('admin.index');
+   Route::post('/message/{id}/answer', 'Admin\IndexController@answer')->name('admin.answer');
 });
-Route::get('/main', function () {
-    return view('pages.main_list');
-});
+
+
+Auth::routes();
+
